@@ -33,12 +33,12 @@ func main() {
 			/*
 				message = dataStringClear()
 				for i := range message {
-					message[i] = Encrypt(key, message[i])
+					message[i] = encrypt(key, message[i])
 					fmt.Println("data = append(data, " + message[i] + ")")
 				}
 			*/
 			message = dataStringEncoded()
-			if Decrypt(key, message[0]) != "Greetings" {
+			if decrypt(key, message[0]) != "Greetings" {
 				fmt.Printf("The force is weak in %s\n", echo)
 			} else {
 				fmt.Println()
@@ -84,7 +84,7 @@ func keyGen(in string) string {
 	return keyString
 }
 
-func Encrypt(key string, in string) string {
+func encrypt(key string, in string) string {
 
 	var temp int
 	var out string
@@ -104,10 +104,10 @@ func Encrypt(key string, in string) string {
 	return out
 }
 
-func Decrypt(key string, in string) string {
+func decrypt(key string, in string) string {
 	var out string
 	var inTemp int
-	var kVal int
+	var keyValue int
 	keyLength := len(key) - 1
 	keyCount := 0
 	ts := strings.Split(in, ",")
@@ -117,9 +117,9 @@ func Decrypt(key string, in string) string {
 			keyCount = 0
 		}
 		inTemp, _ = strconv.Atoi(ts[i])
-		kVal = int(key[keyCount])
+		keyValue = int(key[keyCount])
 		keyCount++
-		out += string(inTemp - kVal)
+		out += string(inTemp - keyValue)
 	}
 	return out
 }
@@ -166,7 +166,38 @@ func dataStringClear() []string {
 	data = append(data, "                ^^??$bec,,.,ceeeP^")
 	data = append(data, "                       `^^^^^^")
 	data = append(data, " ")
-	data = append(data, "Merry Christmas and may January 1st be kind to your ")
+	data = append(data, "Merry Christmas and may January 1st be survivable if painful :)")
+	data = append(data, " ")
+	data = append(data, "Now then, for the question at hand - but first a bit of background.")
+	data = append(data, "About a year ago I got onboard as head tech-potato at a local small")
+	data = append(data, "company who provides a platform for teaching those with hearing and/or")
+	data = append(data, "speech impairment to learn sign-language. And more important, that those")
+	data = append(data, "close to the impaired may keep up with the learning process and build")
+	data = append(data, "their vocabulary of signs in sync with the impaired.")
+	data = append(data, " ")
+	data = append(data, "At the time I got onboard, we already had an app out on iOS and Android")
+	data = append(data, "that have been a limited success. It do its' job by all means, but is a")
+	data = append(data, "bit clunky. And also native, meaning two code-bases to keep track of,")
+	data = append(data, "in addition to the Java backend which also have some issues. All this is")
+	data = append(data, "still live, with some minor fixes here and there. Mostly having made")
+	data = append(data, "queries to the DB more optimized for better response times")
+	data = append(data, " ")
+	data = append(data, "Anyhow, this all was targeted directly to consumers - but we soon found")
+	data = append(data, "that to make it a viable business, we had to target municipalities,")
+	data = append(data, "institutions and other support network. And get it ready for the new")
+	data = append(data, "Privacy and Security Regulations that kick into effect here in Europe")
+	data = append(data, "next year.")
+	data = append(data, " ")
+	data = append(data, "A lot of planning, a lot of new features, and also a new target platform;")
+	data = append(data, "the browser by means of a web-app in addition to iOS and Android.")
+	data = append(data, " ")
+	data = append(data, "In short, a complete rewrite. Greenfield as far as the horizon span! This")
+	data = append(data, "time none of that native nonsense. We just can't keep up with three frontend")
+	data = append(data, "codebases *and* backend. Our resources are limited.")
+	data = append(data, " ")
+	data = append(data, "Our alternatives soon boiled down to two: C# + Xamarin, or a more")
+	data = append(data, "traditional web-stack using Nativescript + Typescript + Angular4. Oh, and")
+	data = append(data, "C# + dotnet core + redis + postgres in the rear.")
 	return data
 }
 
