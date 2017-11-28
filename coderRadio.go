@@ -68,8 +68,7 @@ func getInput() (string, string) {
 }
 
 func keyGen(in string) string {
-	var key int
-	key = 2
+	key := 2
 	for i, r := range in {
 		key *= int(r) ^ i
 	}
@@ -79,8 +78,6 @@ func keyGen(in string) string {
 
 func decrypt(key string, in string) string {
 	var out string
-	var inTemp int
-	var keyValue int
 	keyLength := len(key) - 1
 	keyCount := 0
 	ts := strings.Split(in, ",")
@@ -89,8 +86,8 @@ func decrypt(key string, in string) string {
 		if keyCount > keyLength {
 			keyCount = 0
 		}
-		inTemp, _ = strconv.Atoi(ts[i])
-		keyValue = int(key[keyCount])
+		inTemp, _ := strconv.Atoi(ts[i])
+		keyValue := int(key[keyCount])
 		keyCount++
 		out += string(inTemp - keyValue)
 	}
